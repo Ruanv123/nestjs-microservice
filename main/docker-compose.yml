@@ -1,0 +1,18 @@
+version: '3.3'
+
+services:
+  mongo:
+    image: mongo:latest
+    restart: always
+    container_name: mongo-docker
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./mongo-data:/workspace
+      - type: volume
+        source: mongodb_data_volume
+        target: /data/db
+
+volumes:
+  mongodb_data_volume:
+    driver: local
